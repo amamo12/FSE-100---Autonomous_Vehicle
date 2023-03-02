@@ -1,40 +1,38 @@
 global key
-InitKeyboard();
-while 1
- brick.ResetMotorAngle('A')
- brick.ResetMotorAngle('D')
-  pause(0.1);
+InitKeyboard();              %sets up keyboard input
+while 1                      %infinite loop to run until the program ends
+  pause(0.1);                %pause to reduce errors  
   switch key
-      case 'uparrow'
+      case 'uparrow'         %For moving forward
           disp('Up Arrow Pressed!');
           brick.MoveMotor('A',60)
           brick.MoveMotor('D',60)
-      case 'downarrow'
+      case 'downarrow'       %For moving backward
           disp('Down Arrow Pressed!');
           brick.MoveMotor('A',-60)
           brick.MoveMotor('D',-60)
-      case 'leftarrow'
+      case 'leftarrow'       %For turning left 
           disp('Left Arrow Pressed!');
           brick.MoveMotor('A',20)
           brick.MoveMotor('D',-20)
-      case 'rightarrow'
+      case 'rightarrow'      %For turning right
           disp('Right Arrow Pressed!');
           brick.MoveMotor('A',-20)
           brick.MoveMotor('D',20)
-      case 'w'
+      case 'w'               %Raises the lift
           disp('w pressed')
           brick.MoveMotor('B',15)
-      case 's'
+      case 's'               %Lowes the lift
           disp('s pressed')
           brick.MoveMotor('B',-15)
      
-      case 0       % No key is being pressed.
+      case 0                 % No key is being pressed.
           disp('No Key Pressed');
           brick.StopMotor('A')
           brick.StopMotor('D')
           brick.StopMotor('B')
      
-      case 'q'     % Press "q" to quit.
+      case 'q'              % Press "q" to quit.
           Break;
   end
 end
