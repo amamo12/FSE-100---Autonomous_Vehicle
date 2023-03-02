@@ -1,5 +1,6 @@
 global key
 InitKeyboard();              %sets up keyboard input
+
 while 1                      %infinite loop to run until the program ends
   pause(0.1);                %pause to reduce errors  
   switch key
@@ -25,15 +26,15 @@ while 1                      %infinite loop to run until the program ends
       case 's'               %Lowes the lift
           disp('s pressed')
           brick.MoveMotor('B',-15)
-     
       case 0                 % No key is being pressed.
           disp('No Key Pressed');
           brick.StopMotor('A')
           brick.StopMotor('D')
           brick.StopMotor('B')
-     
       case 'q'              % Press "q" to quit.
           Break;
+          
   end
 end
+
 CloseKeyboard();
