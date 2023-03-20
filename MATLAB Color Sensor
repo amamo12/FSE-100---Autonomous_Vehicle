@@ -1,0 +1,63 @@
+global key
+InitKeyboard();              %sets up keyboard input
+
+i = brick.SetColorMode(1,2) % variable to store value of color; 
+% change for specific port
+while 1                      %infinite loop
+ pause(0.1);                %pause to reduce errors 
+ switch key
+     case i == 1         %for when color sensor senses black
+         disp('Forward');
+         brick.MoveMotor('A',60)
+         brick.MoveMotor('D',60)
+     case i == 5       %for when color sensor senses red
+         disp('Stop for 4 seconds'); 
+         pause(4);
+         brick.MoveMotor('A',60)
+         brick.MoveMotor('D',60)  
+     case 'z'              % Press "z" to quit.
+         Break;
+     otherwise
+         while 1                      %infinite loop to run until the program ends
+           pause(0.1);                %pause to reduce errors  
+           switch key
+               case 'uparrow'         %For moving forward
+                   disp('Up Arrow Pressed!');
+                   brick.MoveMotor('A',60)
+                   brick.MoveMotor('D',60)
+               case 'downarrow'       %For moving backward
+                   disp('Down Arrow Pressed!');
+                   brick.MoveMotor('A',-60)
+                   brick.MoveMotor('D',-60)
+               case 'leftarrow'       %For turning left 
+                   disp('Left Arrow Pressed!');
+                   brick.MoveMotor('A',20)
+                   brick.MoveMotor('D',-20)
+               case 'rightarrow'      %For turning right
+                   disp('Right Arrow Pressed!');
+                   brick.MoveMotor('A',-20)
+                   brick.MoveMotor('D',20)
+               case 'w'               %Raises the lift
+                   disp('w pressed')
+                   brick.MoveMotor('B',15)
+               case 's'               %Lowes the lift
+                   disp('s pressed')
+                   brick.MoveMotor('B',-15)
+               case 0                 % No key is being pressed.
+                   disp('No Key Pressed');
+                   brick.StopMotor('A')
+                   brick.StopMotor('D')
+                   brick.StopMotor('B')
+               case 'q'              % Press "q" to quit.
+                   Break;
+          
+           end
+        end
+
+
+ end
+end
+
+
+CloseKeyboard();
+
